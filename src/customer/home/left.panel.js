@@ -9,7 +9,7 @@ import {categories} from "../../constants";
 import {useDispatch, useSelector} from "react-redux";
 import clsx from "clsx";
 import {setSelectedCategory} from "../../actions";
-import {useHistory, useLocation} from "react-router";
+import {useNavigate, useLocation} from "react-router";
 
 const useStyles = makeStyles((theme) => ({
     iconLarge: {
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function LeftCategory(props) {
-    const history = useHistory();
+    const navigate = useNavigate();
     const location = useLocation()
     const classes = useStyles()
     const selectedCategory = useSelector(state => state.selectedCategory)
@@ -50,7 +50,7 @@ function LeftCategory(props) {
     const onItemClick = (category) => {
         dispatch(setSelectedCategory(category))
         if (location.pathname !== "/customer") {
-            history.push('/customer')
+            navigate ('/customer')
         }
     }
     return (

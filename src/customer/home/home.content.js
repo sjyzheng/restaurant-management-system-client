@@ -11,7 +11,7 @@ import clsx from "clsx";
 import PopularList from "./list.popular";
 import DialogContent from "@material-ui/core/DialogContent";
 import Dialog from "@material-ui/core/Dialog";
-import Checkout from "../checkout/checkout.";
+import Checkout from "../checkout/Checkout";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";

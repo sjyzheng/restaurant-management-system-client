@@ -14,7 +14,7 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import Badge from "@material-ui/core/Badge";
 import {useDispatch, useSelector} from "react-redux";
 import {addShoppingCart, removeShoppingCart} from "../../actions";
-import {useHistory} from "react-router";
+import {useNavigate} from "react-router";
 import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function ItemFood(props) {
-    const history = useHistory()
+    const navigate = useNavigate()
     const classes = useStyles();
     const {food, imgUrl} = props
     const shoppingCart = useSelector(state => state.shoppingCart)
@@ -82,10 +82,11 @@ export default function ItemFood(props) {
             }
             delta === 1 ? dispatch(addShoppingCart(foodToAdd)) : dispatch(removeShoppingCart(foodToAdd))
         } else {
-            history.push({
-                pathname: "/login",
-                state: {isLogin: true}
-            }, '/login')
+            navigate("/login", {state: {isLogin: true}})
+            // history.push({
+            //     pathname: "/login",
+            //     state: {isLogin: true}
+            // }, '/login')
         }
     }, [dispatch, food])
 

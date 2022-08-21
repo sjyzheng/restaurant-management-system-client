@@ -12,7 +12,7 @@ import LocalMallIcon from '@material-ui/icons/LocalMall';
 import MoreIcon from "@material-ui/icons/MoreVert";
 import AppBar from "@material-ui/core/AppBar";
 import {fade, makeStyles} from "@material-ui/core/styles";
-import {NavLink as Link, Route, useHistory} from 'react-router-dom'
+import {NavLink as Link, Route, useNavigate} from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -24,7 +24,7 @@ import Dialog from "@material-ui/core/Dialog";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ShoppingCart from "./right.panel";
 import {setLogin, setLoginUser} from "../../actions";
-import Checkout from "../checkout/checkout.";
+import Checkout from "../checkout/Checkout";
 
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
@@ -124,7 +124,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function Header(props) {
-    const history = useHistory()
+    const navigate = useNavigate()
     const classes = useStyles()
     const isLogin = useSelector(state => state.isLogin)
     const user = useSelector(state => state.user)
@@ -183,7 +183,7 @@ export default function Header(props) {
         dispatch(setLogin(false))
         localStorage.removeItem("user")
         localStorage.removeItem("isLogin")
-        history.push("/customer")
+        navigate ("/customer")
     }
 
     return (

@@ -27,7 +27,7 @@ export const fruitData = fruit
 
 export const REMOTE_URL = "https://web5610-final-project-backend.herokuapp.com";
 export const LOCAL_URL = "http://localhost:8080"
-export const CURRENT_URL = REMOTE_URL
+export const CURRENT_URL = LOCAL_URL
 // wjc for user service
 export const userLoginUrl = CURRENT_URL + "/users/login"
 export const userRegisterUrl = CURRENT_URL + "/users/register"

@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Grid from '@material-ui/core/Grid';
+import Typography from '@mui/material/Typography';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Grid from '@mui/material/Grid';
 import {useSelector} from "react-redux";
 
 const addresses = ['1 Material-UI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
@@ -66,7 +66,7 @@ export default function Review() {
                     <Typography gutterBottom>{addresses.join(', ')}</Typography>
                 </Grid>
                 <Grid item container direction="column" xs={12} sm={6}>
-                    <Typography variant="h6" gutterBottom className={classes.title}>
+                    <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
                         Payment details
                     </Typography>
                     <Grid container>

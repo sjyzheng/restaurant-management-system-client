@@ -18,7 +18,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import CartList from "./list.cart";
 import {useDispatch, useSelector} from "react-redux";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {getUserOrders} from "../service/user.service";
 import {setOrdersList} from "../../actions";
 import Button from "@material-ui/core/Button";
@@ -107,7 +107,7 @@ function a11yProps(index) {
 }
 
 export default function Profile(props) {
-    const history = useHistory()
+    const navigate = useNavigate()
     const classes = useStyles()
     const theme = useTheme()
     const user = useSelector(state => state.user)
@@ -135,10 +135,11 @@ export default function Profile(props) {
                     <div className={classes.nothingButtonMenu}>
                         <Button variant="contained" color="primary" href="#contained-buttons"
                                 onClick={() => {
-                                    history.push({
-                                        pathname: "/login",
-                                        state: {isLogin: true}
-                                    }, '/login')
+                                    navigate("/login", {state: {isLogin: true}})
+                                    // history.push({
+                                    //     pathname: "/login",
+                                    //     state: {isLogin: true}
+                                    // }, '/login')
                                 }}>
                             Login
                         </Button>

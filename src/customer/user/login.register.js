@@ -18,7 +18,7 @@ import {Alert} from "@material-ui/lab";
 import {login, register} from "../service/user.service";
 import {useDispatch} from "react-redux";
 import {setLogin, setLoginUser} from "../../actions";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -83,7 +83,7 @@ export default function LoginRegister(props) {
     const [displayError, setDisplayError] = useState(false)
     const [errorMsg, setErrorMsg] = useState("")
     const dispatch = useDispatch()
-    const history = useHistory();
+    const navigate = useNavigate();
     const clearInput = () => {
         setUsername("")
         setPassword("")
@@ -115,9 +115,9 @@ export default function LoginRegister(props) {
                         dispatch(setLoginUser(actualUser))
                         dispatch(setLogin(true))
                         if (role === "customer") {
-                            history.push("/customer")
+                            navigate("/customer")
                         } else {
-                            history.push("/restaurant/" + actualUser.id + "/dashBoard")
+                            navigate("/restaurant/" + actualUser.id + "/dashBoard")
                         }
                     }
                 })
@@ -134,14 +134,14 @@ export default function LoginRegister(props) {
                         dispatch(setLoginUser(actualUser))
                         dispatch(setLogin(true))
                         if (role === "customer") {
-                            history.push("/customer")
+                            navigate ("/customer")
                         } else {
-                            history.push("/restaurant/" + actualUser.id + "/dashBoard")
+                            navigate ("/restaurant/" + actualUser.id + "/dashBoard")
                         }
                     }
                 })
         }
-    }, [dispatch, displayError, errorMsg, history])
+    }, [dispatch, displayError, errorMsg, navigate])
     return (
         <Grid container component="main" className={classes.root}>
             <CssBaseline/>
@@ -248,7 +248,7 @@ export default function LoginRegister(props) {
                                         {"Don't have an account? Sign Up"}
                                     </RouterLink>
                                     :
-                                    <a href="#" onClick={() => history.goBack()}>
+                                    <a href="#" onClick={() => navigate(-1)}>
                                         {"Back to Log In"}
                                     </a>
                                 }

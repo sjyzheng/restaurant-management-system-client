@@ -13,7 +13,7 @@ import List from "@material-ui/core/List";
 import SideBarItems from "./SideBarItems";
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import Tooltip from "@material-ui/core/Tooltip";
-import {useHistory} from "react-router";
+import {useNavigate} from "react-router";
 
 
 const drawerWidth = 200;
@@ -90,7 +90,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function NavBar({title, restaurantId}) {
-    const history = useHistory()
+    const navigate = useNavigate()
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
@@ -117,10 +117,11 @@ export default function NavBar({title, restaurantId}) {
                     </Typography>
                     <Tooltip title="Log Out">
                         <IconButton color="inherit" onClick={() => {
-                            history.push({
-                                pathname: "/login",
-                                state: {isLogin: true}
-                            }, '/login')
+                            navigate("/login", {state: {isLogin: true}})
+                            // history.push({
+                            //     pathname: "/login",
+                            //     state: {isLogin: true}
+                            // }, '/login')
                         }}>
                             <PowerSettingsNewIcon/>
                         </IconButton>
