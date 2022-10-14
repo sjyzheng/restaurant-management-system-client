@@ -1,6 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Navigate} from "react-router-dom";
 import routes from "./routes";
+import { ThemeProvider as MuiThemeProvider, StylesProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@emotion/react';
 
 export default function App(props) {
     const {history} = props
